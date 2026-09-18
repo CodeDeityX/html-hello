@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AgentHub B2B SaaS Dashboard</title>
+    <title>AgentHub - Panel de Administración B2B SaaS</title>
     <!-- Tailwind CSS v4 CDN oficial -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
@@ -21,20 +21,13 @@
                 </div>
             </div>
             
-            <div class="p-4 border-b border-slate-800">
-                <button class="w-full flex items-center justify-between px-3 py-2 bg-slate-800/60 rounded-lg text-xs border border-slate-700/50">
-                    <span class="truncate font-medium">Acme Global Org</span>
-                    <span>↕</span>
-                </button>
-            </div>
-
             <nav class="flex-1 p-4 space-y-1.5 overflow-y-auto text-sm">
                 <button onclick="switchSection('dashboard')" id="nav-dashboard" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg font-medium bg-indigo-600 text-white transition">📊 Dashboard</button>
                 <button onclick="switchSection('users')" id="nav-users" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg font-medium text-slate-400 hover:bg-slate-800 transition">👥 Gestión de usuarios</button>
                 <button onclick="switchSection('agents')" id="nav-agents" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg font-medium text-slate-400 hover:bg-slate-800 transition">🤖 Gestión de agentes</button>
                 <button onclick="switchSection('skills')" id="nav-skills" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg font-medium text-slate-400 hover:bg-slate-800 transition">🧠 Skills</button>
                 <button onclick="switchSection('contracts')" id="nav-contracts" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg font-medium text-slate-400 hover:bg-slate-800 transition">🤝 Contrataciones</button>
-                <button onclick="switchSection('errors')" id="nav-errors" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg font-medium text-slate-400 hover:bg-slate-800 transition">⚠️ Log de errores <span class="ml-auto px-1.5 py-0.5 text-[10px] bg-red-500 text-white rounded-full">3</span></button>
+                <button onclick="switchSection('errors')" id="nav-errors" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg font-medium text-slate-400 hover:bg-slate-800 transition">⚠️ Log de errores <span class="ml-auto px-1.5 py-0.5 text-[10px] bg-red-500 text-white rounded-full">6</span></button>
             </nav>
 
             <div class="p-4 border-t border-slate-800 flex items-center justify-between">
@@ -78,8 +71,6 @@
                             <p class="text-xs text-slate-400">Todos los sistemas operando con normalidad.</p>
                         </div>
                     </div>
-
-                    <!-- Tarjetas de Métricas -->
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                         <div class="p-5 bg-slate-900 rounded-xl border border-slate-800 shadow-sm space-y-2">
                             <div class="flex justify-between items-center text-xs text-slate-400">
@@ -110,50 +101,14 @@
                             <h3 class="text-2xl font-bold text-amber-400">2 Agentes</h3>
                         </div>
                     </div>
-
-                    <!-- Gráfico Actividad Semanal -->
                     <div class="p-6 bg-slate-900 rounded-xl border border-dashed border-slate-800 space-y-4">
-                        <div class="flex justify-between items-center">
-                            <div>
-                                <h3 class="font-bold text-sm">Actividad semanal</h3>
-                                <p class="text-xs text-slate-400">Ejecuciones e inferencias en clústeres activos</p>
-                            </div>
-                            <div class="flex gap-2 text-xs">
-                                <span class="px-2.5 py-1 bg-indigo-600 text-white rounded font-medium">Últimos 7 días</span>
-                                <span class="px-2.5 py-1 bg-slate-800 text-slate-400 rounded font-medium">30 días</span>
-                            </div>
-                        </div>
                         <div class="h-44 flex items-center justify-center text-slate-500 text-xs bg-slate-950/40 rounded-lg border border-slate-800/50">
                             📈 Gráfico de rendimiento renderizado (Pico Viernes: 14,820 ejecuciones)
                         </div>
                     </div>
-
-                    <!-- Operaciones en vivo -->
-                    <div class="bg-slate-900 rounded-xl border border-slate-800 p-5 space-y-4">
-                        <div class="flex justify-between items-center">
-                            <h3 class="font-bold text-sm">Operaciones de agentes <span class="text-[10px] bg-emerald-500/20 text-emerald-400 px-2 py-0.5 rounded-full">EN VIVO</span></h3>
-                            <button class="text-xs text-indigo-400 hover:underline">Ver todos</button>
-                        </div>
-                        <div class="space-y-3 text-xs">
-                            <div class="flex justify-between items-center p-3 bg-slate-950/50 rounded-lg border border-slate-800">
-                                <div>
-                                    <p class="font-semibold text-sm">Agente Soporte-Tier1</p>
-                                    <p class="text-slate-400">Ticket #4892 · Sync CRM Zendesk</p>
-                                </div>
-                                <span class="px-2 py-1 bg-emerald-950 text-emerald-400 rounded font-medium">Éxito · Hace 2m</span>
-                            </div>
-                            <div class="flex justify-between items-center p-3 bg-slate-950/50 rounded-lg border border-slate-800">
-                                <div>
-                                    <p class="font-semibold text-sm">Agente Scraping-Finanzas</p>
-                                    <p class="text-slate-400">Timeout 504 Gateway (Stripe API)</p>
-                                </div>
-                                <span class="px-2 py-1 bg-red-950 text-red-400 rounded font-medium">Fallo · Hace 7m</span>
-                            </div>
-                        </div>
-                    </div>
                 </section>
 
-                <!-- 2. GESTIÓN DE USUARIOS -->
+                <!-- 2. GESTIÓN DE USUARIOS (5 filas) -->
                 <section id="sec-users" class="space-y-6 hidden">
                     <div class="bg-slate-900 rounded-xl border border-slate-800 overflow-hidden shadow-sm">
                         <table class="w-full text-left border-collapse text-sm">
@@ -180,12 +135,64 @@
                                         </div>
                                     </td>
                                 </tr>
+                                <tr>
+                                    <td class="p-4 font-medium">Stark Industries</td>
+                                    <td class="p-4 text-slate-400">ceo@stark.io</td>
+                                    <td class="p-4">Enterprise Plus</td>
+                                    <td class="p-4"><span class="px-2.5 py-1 text-xs bg-emerald-950 text-emerald-400 rounded-full font-medium">Activo</span></td>
+                                    <td class="p-4 text-right relative">
+                                        <button onclick="toggleDropdown(event, 'user-dropdown-2')" class="p-1.5 hover:bg-slate-800 rounded">⋮</button>
+                                        <div id="user-dropdown-2" class="hidden absolute right-4 mt-2 w-36 bg-slate-800 border border-slate-700 rounded-lg shadow-lg z-20 text-left overflow-hidden">
+                                            <button onclick="openModal('modal-user-detail')" class="w-full px-4 py-2.5 text-xs hover:bg-slate-700 text-left font-medium">Ver detalle</button>
+                                            <button class="w-full px-4 py-2.5 text-xs text-red-400 hover:bg-slate-700 text-left font-medium">Eliminar</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="p-4 font-medium">Globex Corp</td>
+                                    <td class="p-4 text-slate-400">contact@globex.com</td>
+                                    <td class="p-4">Pro</td>
+                                    <td class="p-4"><span class="px-2.5 py-1 text-xs bg-emerald-950 text-emerald-400 rounded-full font-medium">Activo</span></td>
+                                    <td class="p-4 text-right relative">
+                                        <button onclick="toggleDropdown(event, 'user-dropdown-3')" class="p-1.5 hover:bg-slate-800 rounded">⋮</button>
+                                        <div id="user-dropdown-3" class="hidden absolute right-4 mt-2 w-36 bg-slate-800 border border-slate-700 rounded-lg shadow-lg z-20 text-left overflow-hidden">
+                                            <button onclick="openModal('modal-user-detail')" class="w-full px-4 py-2.5 text-xs hover:bg-slate-700 text-left font-medium">Ver detalle</button>
+                                            <button class="w-full px-4 py-2.5 text-xs text-red-400 hover:bg-slate-700 text-left font-medium">Eliminar</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="p-4 font-medium">Wayne Enterprises</td>
+                                    <td class="p-4 text-slate-400">bwayne@wayne.net</td>
+                                    <td class="p-4">Enterprise</td>
+                                    <td class="p-4"><span class="px-2.5 py-1 text-xs bg-amber-950 text-amber-400 rounded-full font-medium">Suspendido</span></td>
+                                    <td class="p-4 text-right relative">
+                                        <button onclick="toggleDropdown(event, 'user-dropdown-4')" class="p-1.5 hover:bg-slate-800 rounded">⋮</button>
+                                        <div id="user-dropdown-4" class="hidden absolute right-4 mt-2 w-36 bg-slate-800 border border-slate-700 rounded-lg shadow-lg z-20 text-left overflow-hidden">
+                                            <button onclick="openModal('modal-user-detail')" class="w-full px-4 py-2.5 text-xs hover:bg-slate-700 text-left font-medium">Ver detalle</button>
+                                            <button class="w-full px-4 py-2.5 text-xs text-red-400 hover:bg-slate-700 text-left font-medium">Eliminar</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="p-4 font-medium">Cyberdyne Systems</td>
+                                    <td class="p-4 text-slate-400">admin@cyberdyne.ai</td>
+                                    <td class="p-4">Starter</td>
+                                    <td class="p-4"><span class="px-2.5 py-1 text-xs bg-emerald-950 text-emerald-400 rounded-full font-medium">Activo</span></td>
+                                    <td class="p-4 text-right relative">
+                                        <button onclick="toggleDropdown(event, 'user-dropdown-5')" class="p-1.5 hover:bg-slate-800 rounded">⋮</button>
+                                        <div id="user-dropdown-5" class="hidden absolute right-4 mt-2 w-36 bg-slate-800 border border-slate-700 rounded-lg shadow-lg z-20 text-left overflow-hidden">
+                                            <button onclick="openModal('modal-user-detail')" class="w-full px-4 py-2.5 text-xs hover:bg-slate-700 text-left font-medium">Ver detalle</button>
+                                            <button class="w-full px-4 py-2.5 text-xs text-red-400 hover:bg-slate-700 text-left font-medium">Eliminar</button>
+                                        </div>
+                                    </td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
                 </section>
 
-                <!-- 3. GESTIÓN DE AGENTES -->
+                <!-- 3. GESTIÓN DE AGENTES (4 Agentes) -->
                 <section id="sec-agents" class="space-y-4 hidden">
                     <div class="bg-slate-900 rounded-xl border border-slate-800 p-5 space-y-3 shadow-sm">
                         <div class="flex justify-between items-center">
@@ -203,9 +210,57 @@
                             <p>• Lectura de PDF / OCR (Habilitada)</p>
                         </div>
                     </div>
+                    <div class="bg-slate-900 rounded-xl border border-slate-800 p-5 space-y-3 shadow-sm">
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <h3 class="font-bold text-sm">Agente Scraping-Finanzas</h3>
+                                <p class="text-xs text-slate-400">Propietario: Stark Industries · Estado: <span class="text-amber-400">Fallando</span></p>
+                            </div>
+                            <div class="flex gap-2">
+                                <button onclick="toggleSkills('skills-2')" class="text-xs px-3 py-1.5 bg-indigo-950 text-indigo-400 rounded-md font-medium border border-indigo-900">Skills ▾</button>
+                                <button onclick="openModal('modal-config')" class="text-xs px-3 py-1.5 bg-slate-800 rounded-md font-medium">Configurar</button>
+                            </div>
+                        </div>
+                        <div id="skills-2" class="hidden pl-4 border-l-2 border-indigo-500 space-y-1 text-xs text-slate-400 pt-2">
+                            <p>• Stripe API Integration</p>
+                            <p>• Automated Invoicing</p>
+                        </div>
+                    </div>
+                    <div class="bg-slate-900 rounded-xl border border-slate-800 p-5 space-y-3 shadow-sm">
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <h3 class="font-bold text-sm">Agente HR-Recruiter</h3>
+                                <p class="text-xs text-slate-400">Propietario: Globex Corp · Estado: <span class="text-emerald-400">Activo</span></p>
+                            </div>
+                            <div class="flex gap-2">
+                                <button onclick="toggleSkills('skills-3')" class="text-xs px-3 py-1.5 bg-indigo-950 text-indigo-400 rounded-md font-medium border border-indigo-900">Skills ▾</button>
+                                <button onclick="openModal('modal-config')" class="text-xs px-3 py-1.5 bg-slate-800 rounded-md font-medium">Configurar</button>
+                            </div>
+                        </div>
+                        <div id="skills-3" class="hidden pl-4 border-l-2 border-indigo-500 space-y-1 text-xs text-slate-400 pt-2">
+                            <p>• CV Parsing & Scoring</p>
+                            <p>• Calendly Booking API</p>
+                        </div>
+                    </div>
+                    <div class="bg-slate-900 rounded-xl border border-slate-800 p-5 space-y-3 shadow-sm">
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <h3 class="font-bold text-sm">Agente Legal-Compliance</h3>
+                                <p class="text-xs text-slate-400">Propietario: Wayne Enterprises · Estado: <span class="text-emerald-400">Activo</span></p>
+                            </div>
+                            <div class="flex gap-2">
+                                <button onclick="toggleSkills('skills-4')" class="text-xs px-3 py-1.5 bg-indigo-950 text-indigo-400 rounded-md font-medium border border-indigo-900">Skills ▾</button>
+                                <button onclick="openModal('modal-config')" class="text-xs px-3 py-1.5 bg-slate-800 rounded-md font-medium">Configurar</button>
+                            </div>
+                        </div>
+                        <div id="skills-4" class="hidden pl-4 border-l-2 border-indigo-500 space-y-1 text-xs text-slate-400 pt-2">
+                            <p>• GDPR Compliance Checker</p>
+                            <p>• Contract Audit Tool</p>
+                        </div>
+                    </div>
                 </section>
 
-                <!-- 4. SKILLS -->
+                <!-- 4. SKILLS (4 Skills) -->
                 <section id="sec-skills" class="space-y-6 hidden">
                     <div class="p-4 bg-indigo-950/40 rounded-xl border border-indigo-900 text-sm space-y-1">
                         <p class="font-semibold text-indigo-300">Catálogo de Skills</p>
@@ -217,10 +272,25 @@
                             <p class="text-xs text-slate-400">Extracción estructurada en tiempo real.</p>
                             <p class="text-[11px] font-semibold text-indigo-400 pt-2">Habilitado en 38 agentes</p>
                         </div>
+                        <div class="p-5 bg-slate-900 rounded-xl border border-slate-800 space-y-2">
+                            <h4 class="font-bold text-sm">Lectura de PDF / OCR</h4>
+                            <p class="text-xs text-slate-400">Procesa documentos escaneados con alta precisión.</p>
+                            <p class="text-[11px] font-semibold text-indigo-400 pt-2">Habilitado en 24 agentes</p>
+                        </div>
+                        <div class="p-5 bg-slate-900 rounded-xl border border-slate-800 space-y-2">
+                            <h4 class="font-bold text-sm">Stripe Billing API</h4>
+                            <p class="text-xs text-slate-400">Gestión automatizada de cobros y facturas.</p>
+                            <p class="text-[11px] font-semibold text-indigo-400 pt-2">Habilitado en 19 agentes</p>
+                        </div>
+                        <div class="p-5 bg-slate-900 rounded-xl border border-slate-800 space-y-2">
+                            <h4 class="font-bold text-sm">CV Parsing Engine</h4>
+                            <p class="text-xs text-slate-400">Análisis y filtrado automático de currículums.</p>
+                            <p class="text-[11px] font-semibold text-indigo-400 pt-2">Habilitado en 12 agentes</p>
+                        </div>
                     </div>
                 </section>
 
-                <!-- 5. CONTRATACIONES -->
+                <!-- 5. CONTRATACIONES (4 Contratos) -->
                 <section id="sec-contracts" class="space-y-6 hidden">
                     <div class="bg-slate-900 rounded-xl border border-slate-800 overflow-hidden shadow-sm">
                         <table class="w-full text-left border-collapse text-sm">
@@ -241,23 +311,101 @@
                                     <td class="p-4 text-xs">01 Oct - 31 Dic</td>
                                     <td class="p-4 text-right font-bold">$1,200/mes</td>
                                 </tr>
+                                <tr>
+                                    <td class="p-4 font-medium">Stark Industries</td>
+                                    <td class="p-4">Scraping-Finanzas</td>
+                                    <td class="p-4 text-slate-400 text-xs">Stripe API</td>
+                                    <td class="p-4 text-xs">15 Sep - 15 Nov</td>
+                                    <td class="p-4 text-right font-bold">$2,400/mes</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-4 font-medium">Globex Corp</td>
+                                    <td class="p-4">HR-Recruiter</td>
+                                    <td class="p-4 text-slate-400 text-xs">CV Parsing, Calendly</td>
+                                    <td class="p-4 text-xs">01 Nov - 30 Abr</td>
+                                    <td class="p-4 text-right font-bold">$950/mes</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-4 font-medium">Wayne Enterprises</td>
+                                    <td class="p-4">Legal-Compliance</td>
+                                    <td class="p-4 text-slate-400 text-xs">GDPR Audit</td>
+                                    <td class="p-4 text-xs">10 Ago - 10 Ago</td>
+                                    <td class="p-4 text-right font-bold">$3,500/mes</td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
                 </section>
 
-                <!-- 6. LOG DE ERRORES -->
+                <!-- 6. LOG DE ERRORES (6 Entradas Hardcodeadas) -->
                 <section id="sec-errors" class="space-y-4 hidden">
-                    <div class="p-4 bg-slate-900 rounded-xl border border-slate-800 flex justify-between items-center shadow-sm">
-                        <div class="space-y-1">
-                            <div class="flex items-center gap-2">
-                                <span class="px-2 py-0.5 text-[10px] bg-red-500 text-white rounded font-bold uppercase">Crítico</span>
-                                <span class="text-xs font-mono text-slate-400">[2026-09-17 21:00]</span>
+                    <div class="space-y-3">
+                        <div class="p-4 bg-slate-900 rounded-xl border border-slate-800 flex justify-between items-center shadow-sm">
+                            <div class="space-y-1">
+                                <div class="flex items-center gap-2">
+                                    <span class="px-2 py-0.5 text-[10px] bg-red-500 text-white rounded font-bold uppercase">Crítico</span>
+                                    <span class="text-xs font-mono text-slate-400">[2026-09-17 21:00]</span>
+                                </div>
+                                <p class="text-sm font-semibold">Agente Scraping-Finanzas</p>
+                                <p class="text-xs text-slate-400">Timeout 504 Gateway (Stripe API)</p>
                             </div>
-                            <p class="text-sm font-semibold">Agente Scraping-Finanzas</p>
-                            <p class="text-xs text-slate-400">Timeout 504 Gateway (Stripe API)</p>
+                            <button onclick="openModal('modal-error')" class="px-3 py-1.5 text-xs bg-slate-800 rounded-lg font-medium">Ver traza</button>
                         </div>
-                        <button onclick="openModal('modal-error')" class="px-3 py-1.5 text-xs bg-slate-800 rounded-lg font-medium">Ver traza</button>
+                        <div class="p-4 bg-slate-900 rounded-xl border border-slate-800 flex justify-between items-center shadow-sm">
+                            <div class="space-y-1">
+                                <div class="flex items-center gap-2">
+                                    <span class="px-2 py-0.5 text-[10px] bg-amber-500 text-white rounded font-bold uppercase">Advertencia</span>
+                                    <span class="text-xs font-mono text-slate-400">[2026-09-17 19:42]</span>
+                                </div>
+                                <p class="text-sm font-semibold">Agente Soporte-Tier1</p>
+                                <p class="text-xs text-slate-400">High Token Latency (>1.8s per response)</p>
+                            </div>
+                            <button onclick="openModal('modal-error')" class="px-3 py-1.5 text-xs bg-slate-800 rounded-lg font-medium">Ver traza</button>
+                        </div>
+                        <div class="p-4 bg-slate-900 rounded-xl border border-slate-800 flex justify-between items-center shadow-sm">
+                            <div class="space-y-1">
+                                <div class="flex items-center gap-2">
+                                    <span class="px-2 py-0.5 text-[10px] bg-red-500 text-white rounded font-bold uppercase">Crítico</span>
+                                    <span class="text-xs font-mono text-slate-400">[2026-09-17 15:10]</span>
+                                </div>
+                                <p class="text-sm font-semibold">Agente Legal-Compliance</p>
+                                <p class="text-xs text-slate-400">Vector DB Connection Refused</p>
+                            </div>
+                            <button onclick="openModal('modal-error')" class="px-3 py-1.5 text-xs bg-slate-800 rounded-lg font-medium">Ver traza</button>
+                        </div>
+                        <div class="p-4 bg-slate-900 rounded-xl border border-slate-800 flex justify-between items-center shadow-sm">
+                            <div class="space-y-1">
+                                <div class="flex items-center gap-2">
+                                    <span class="px-2 py-0.5 text-[10px] bg-blue-500 text-white rounded font-bold uppercase">Info</span>
+                                    <span class="text-xs font-mono text-slate-400">[2026-09-17 12:05]</span>
+                                </div>
+                                <p class="text-sm font-semibold">Agente HR-Recruiter</p>
+                                <p class="text-xs text-slate-400">Rate Limit Warning (Calendly API 80%)</p>
+                            </div>
+                            <button onclick="openModal('modal-error')" class="px-3 py-1.5 text-xs bg-slate-800 rounded-lg font-medium">Ver traza</button>
+                        </div>
+                        <div class="p-4 bg-slate-900 rounded-xl border border-slate-800 flex justify-between items-center shadow-sm">
+                            <div class="space-y-1">
+                                <div class="flex items-center gap-2">
+                                    <span class="px-2 py-0.5 text-[10px] bg-amber-500 text-white rounded font-bold uppercase">Advertencia</span>
+                                    <span class="text-xs font-mono text-slate-400">[2026-09-17 09:30]</span>
+                                </div>
+                                <p class="text-sm font-semibold">Agente Soporte-Tier1</p>
+                                <p class="text-xs text-slate-400">Memory usage threshold reached 85%</p>
+                            </div>
+                            <button onclick="openModal('modal-error')" class="px-3 py-1.5 text-xs bg-slate-800 rounded-lg font-medium">Ver traza</button>
+                        </div>
+                        <div class="p-4 bg-slate-900 rounded-xl border border-slate-800 flex justify-between items-center shadow-sm">
+                            <div class="space-y-1">
+                                <div class="flex items-center gap-2">
+                                    <span class="px-2 py-0.5 text-[10px] bg-red-500 text-white rounded font-bold uppercase">Crítico</span>
+                                    <span class="text-xs font-mono text-slate-400">[2026-09-16 23:45]</span>
+                                </div>
+                                <p class="text-sm font-semibold">Agente Scraping-Finanzas</p>
+                                <p class="text-xs text-slate-400">SSL Certificate Expired on Target URL</p>
+                            </div>
+                            <button onclick="openModal('modal-error')" class="px-3 py-1.5 text-xs bg-slate-800 rounded-lg font-medium">Ver traza</button>
+                        </div>
                     </div>
                 </section>
 
@@ -265,18 +413,26 @@
         </div>
     </div>
 
-    <!-- MODAL NUEVO AGENTE -->
+    <!-- MODALES GLOBALES -->
+    <div id="modal-user-detail" class="hidden fixed inset-0 bg-slate-950/70 backdrop-blur-xs flex items-center justify-center z-50 p-4" onclick="closeModalOnBackdrop(event, 'modal-user-detail')">
+        <div class="bg-slate-900 rounded-xl max-w-md w-full p-6 border border-slate-800 shadow-xl space-y-4">
+            <h3 class="text-lg font-bold">Detalle de Registro del Usuario</h3>
+            <p class="text-sm text-slate-400">Información completa corporativa, historial de facturación y cuotas de consumo de agentes asociadas al perfil.</p>
+            <button onclick="closeModal('modal-user-detail')" class="w-full py-2 bg-indigo-600 text-white rounded-lg text-sm font-medium">Cerrar</button>
+        </div>
+    </div>
+
     <div id="modal-agent" class="hidden fixed inset-0 bg-slate-950/70 backdrop-blur-xs flex items-center justify-center z-50 p-4" onclick="closeModalOnBackdrop(event, 'modal-agent')">
         <div class="bg-slate-900 rounded-xl max-w-lg w-full p-6 border border-slate-800 shadow-xl space-y-4">
             <h3 class="text-lg font-bold">Desplegar Nuevo Agente</h3>
             <div class="space-y-3 text-sm">
                 <div>
                     <label class="block text-xs font-medium text-slate-400 mb-1">Nombre del Agente</label>
-                    <input type="text" placeholder="Ej: Agente Conciliación Bancaria" class="w-full p-2.5 bg-slate-950 border border-slate-800 rounded-lg text-xs focus:outline-none">
+                    <input type="text" placeholder="Ej: Agente Conciliación Bancaria" class="w-full p-2.5 bg-slate-950 border border-slate-800 rounded-lg text-xs focus:outline-none text-white">
                 </div>
                 <div>
                     <label class="block text-xs font-medium text-slate-400 mb-1">Modelo Fundacional</label>
-                    <select class="w-full p-2.5 bg-slate-950 border border-slate-800 rounded-lg text-xs focus:outline-none">
+                    <select class="w-full p-2.5 bg-slate-950 border border-slate-800 rounded-lg text-xs focus:outline-none text-white">
                         <option>Claude 3.5 Sonnet (Recomendado)</option>
                         <option>GPT-4o Enterprise</option>
                         <option>Gemini 1.5 Pro</option>
@@ -287,6 +443,25 @@
                 <button onclick="closeModal('modal-agent')" class="flex-1 py-2 bg-slate-800 text-slate-300 rounded-lg text-xs font-medium">Cancelar</button>
                 <button onclick="closeModal('modal-agent')" class="flex-1 py-2 bg-indigo-600 text-white rounded-lg text-xs font-medium">Crear Agente</button>
             </div>
+        </div>
+    </div>
+
+    <div id="modal-config" class="hidden fixed inset-0 bg-slate-950/70 backdrop-blur-xs flex items-center justify-center z-50 p-4" onclick="closeModalOnBackdrop(event, 'modal-config')">
+        <div class="bg-slate-900 rounded-xl max-w-lg w-full p-6 border border-slate-800 shadow-xl space-y-4">
+            <h3 class="text-lg font-bold">Configuración de Prompt de Sistema</h3>
+            <textarea class="w-full h-32 p-3 text-xs font-mono bg-slate-950 border border-slate-800 rounded-lg focus:outline-none text-white">Eres un agente de soporte técnico experto en resolver incidencias con empatía y precisión...</textarea>
+            <button onclick="closeModal('modal-config')" class="w-full py-2 bg-indigo-600 text-white rounded-lg text-sm font-medium">Guardar Cambios</button>
+        </div>
+    </div>
+
+    <div id="modal-error" class="hidden fixed inset-0 bg-slate-950/70 backdrop-blur-xs flex items-center justify-center z-50 p-4" onclick="closeModalOnBackdrop(event, 'modal-error')">
+        <div class="bg-slate-900 rounded-xl max-w-lg w-full p-6 border border-slate-800 shadow-xl space-y-4">
+            <h3 class="text-lg font-bold">Traza Completa de Excepción</h3>
+            <pre class="p-3 text-[11px] font-mono bg-slate-950 text-red-400 rounded-lg overflow-x-auto border border-slate-800">Traceback (most recent call last):
+  File "agent_core.py", line 142, in execute
+    response = requests.post(stripe_api, timeout=5)
+requests.exceptions.Timeout: HTTP 504 Gateway Timeout</pre>
+            <button onclick="closeModal('modal-error')" class="w-full py-2 bg-indigo-600 text-white rounded-lg text-sm font-medium">Cerrar</button>
         </div>
     </div>
 
@@ -330,7 +505,6 @@
         }
 
         function toggleDarkMode() {
-            // El diseño por defecto ya viene en modo oscuro profesional como Stitch
             alert('Modo oscuro activo por defecto (Estándar Stitch B2B).');
         }
     </script>
