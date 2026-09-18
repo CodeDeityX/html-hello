@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="es" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgentHub B2B SaaS Dashboard</title>
+    <!-- Tailwind CSS v4 CDN oficial -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body class="h-full bg-slate-950 text-slate-100 font-sans antialiased">
+
+    <div class="flex h-screen overflow-hidden">
+        
+        <!-- Sidebar de Navegación Fijo -->
+        <aside class="w-64 bg-slate-900 border-r border-slate-800 flex flex-col hidden md:flex">
+            <div class="p-5 border-b border-slate-800 flex items-center gap-3">
+                <div class="w-8 h-8 rounded-lg bg-indigo-600 flex items-center justify-center text-white font-bold">AH</div>
+                <div>
+                    <span class="font-bold text-sm block tracking-tight">AgentHub</span>
+                    <span class="text-[10px] text-indigo-400 font-semibold uppercase">B2B Enterprise</span>
+                </div>
+            </div>
+            
+            <div class="p-4 border-b border-slate-800">
+                <button class="w-full flex items-center justify-between px-3 py-2 bg-slate-800/60 rounded-lg text-xs border border-slate-700/50">
+                    <span class="truncate font-medium">Acme Global Org</span>
+                    <span>↕</span>
+                </button>
+            </div>
+
+            <nav class="flex-1 p-4 space-y-1.5 overflow-y-auto text-sm">
+                <button onclick="switchSection('dashboard')" id="nav-dashboard" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg font-medium bg-indigo-600 text-white transition">📊 Dashboard</button>
+                <button onclick="switchSection('users')" id="nav-users" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg font-medium text-slate-400 hover:bg-slate-800 transition">👥 Gestión de usuarios</button>
+                <button onclick="switchSection('agents')" id="nav-agents" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg font-medium text-slate-400 hover:bg-slate-800 transition">🤖 Gestión de agentes</button>
+                <button onclick="switchSection('skills')" id="nav-skills" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg font-medium text-slate-400 hover:bg-slate-800 transition">🧠 Skills</button>
+                <button onclick="switchSection('contracts')" id="nav-contracts" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg font-medium text-slate-400 hover:bg-slate-800 transition">🤝 Contrataciones</button>
+                <button onclick="switchSection('errors')" id="nav-errors" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg font-medium text-slate-400 hover:bg-slate-800 transition">⚠️ Log de errores <span class="ml-auto px-1.5 py-0.5 text-[10px] bg-red-500 text-white rounded-full">3</span></button>
+            </nav>
+
+            <div class="p-4 border-t border-slate-800 flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center font-bold text-xs">AV</div>
+                    <div class="overflow-hidden">
+                        <p class="text-xs font-semibold truncate">Alex Vance</p>
+                        <p class="text-[10px] text-slate-400 truncate">Root Admin</p>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Contenedor Principal -->
+        <div class="flex-1 flex flex-col min-w-0 overflow-hidden">
+            
+            <!-- Header Superior -->
+            <header class="h-16 bg-slate-900 border-b border-slate-800 flex items-center justify-between px-6 z-10">
+                <div>
+                    <h1 id="section-title" class="text-base font-bold tracking-tight">Dashboard Principal</h1>
+                    <p class="text-xs text-slate-400">Hoy, 24 Octubre · <span class="text-emerald-400 font-medium">99.98% Uptime</span> en 8 clústeres</p>
+                </div>
+                <div class="flex items-center gap-3">
+                    <button onclick="openModal('modal-agent')" class="inline-flex items-center gap-2 px-3 py-1.5 text-xs font-semibold bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg transition shadow-sm">
+                        + Nuevo Agente
+                    </button>
+                    <button onclick="toggleDarkMode()" class="p-2 rounded-lg bg-slate-800 hover:bg-slate-700 transition" title="Modo Claro/Oscuro">
+                        🌙
+                    </button>
+                </div>
+            </header>
+
+            <!-- Contenido Dinámico de Secciones -->
+            <main class="flex-1 overflow-y-auto p-6 space-y-6">
+                
+                <!-- 1. DASHBOARD -->
+                <section id="sec-dashboard" class="space-y-6">
+                    <div class="p-4 bg-indigo-950/40 border border-indigo-900/50 rounded-xl flex justify-between items-center">
+                        <div>
+                            <h2 class="font-bold text-sm">Hola, Admin 👋</h2>
+                            <p class="text-xs text-slate-400">Todos los sistemas operando con normalidad.</p>
+                        </div>
+                    </div>
+
+                    <!-- Tarjetas de Métricas -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                        <div class="p-5 bg-slate-900 rounded-xl border border-slate-800 shadow-sm space-y-2">
+                            <div class="flex justify-between items-center text-xs text-slate-400">
+                                <span>Ingresos totales</span>
+                                <span class="text-emerald-400 bg-emerald-950/60 px-2 py-0.5 rounded font-semibold">+14.2%</span>
+                            </div>
+                            <h3 class="text-2xl font-bold">$128,450</h3>
+                        </div>
+                        <div class="p-5 bg-slate-900 rounded-xl border border-slate-800 shadow-sm space-y-2">
+                            <div class="flex justify-between items-center text-xs text-slate-400">
+                                <span>Pérdidas desc.</span>
+                                <span class="text-red-400 bg-red-950/60 px-2 py-0.5 rounded font-semibold">-2.4%</span>
+                            </div>
+                            <h3 class="text-2xl font-bold text-red-400">$3,120</h3>
+                        </div>
+                        <div class="p-5 bg-slate-900 rounded-xl border border-slate-800 shadow-sm space-y-2">
+                            <div class="flex justify-between items-center text-xs text-slate-400">
+                                <span>Agentes activos</span>
+                                <span class="text-indigo-400 bg-indigo-950/60 px-2 py-0.5 rounded font-semibold">98% Estables</span>
+                            </div>
+                            <h3 class="text-2xl font-bold text-indigo-400">42 Nodos</h3>
+                        </div>
+                        <div class="p-5 bg-slate-900 rounded-xl border border-slate-800 shadow-sm space-y-2">
+                            <div class="flex justify-between items-center text-xs text-slate-400">
+                                <span>Agentes fallo</span>
+                                <span class="text-amber-400 bg-amber-950/60 px-2 py-0.5 rounded font-semibold">Atención req.</span>
+                            </div>
+                            <h3 class="text-2xl font-bold text-amber-400">2 Agentes</h3>
+                        </div>
+                    </div>
+
+                    <!-- Gráfico Actividad Semanal -->
+                    <div class="p-6 bg-slate-900 rounded-xl border border-dashed border-slate-800 space-y-4">
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <h3 class="font-bold text-sm">Actividad semanal</h3>
+                                <p class="text-xs text-slate-400">Ejecuciones e inferencias en clústeres activos</p>
+                            </div>
+                            <div class="flex gap-2 text-xs">
+                                <span class="px-2.5 py-1 bg-indigo-600 text-white rounded font-medium">Últimos 7 días</span>
+                                <span class="px-2.5 py-1 bg-slate-800 text-slate-400 rounded font-medium">30 días</span>
+                            </div>
+                        </div>
+                        <div class="h-44 flex items-center justify-center text-slate-500 text-xs bg-slate-950/40 rounded-lg border border-slate-800/50">
+                            📈 Gráfico de rendimiento renderizado (Pico Viernes: 14,820 ejecuciones)
+                        </div>
+                    </div>
+
+                    <!-- Operaciones en vivo -->
+                    <div class="bg-slate-900 rounded-xl border border-slate-800 p-5 space-y-4">
+                        <div class="flex justify-between items-center">
+                            <h3 class="font-bold text-sm">Operaciones de agentes <span class="text-[10px] bg-emerald-500/20 text-emerald-400 px-2 py-0.5 rounded-full">EN VIVO</span></h3>
+                            <button class="text-xs text-indigo-400 hover:underline">Ver todos</button>
+                        </div>
+                        <div class="space-y-3 text-xs">
+                            <div class="flex justify-between items-center p-3 bg-slate-950/50 rounded-lg border border-slate-800">
+                                <div>
+                                    <p class="font-semibold text-sm">Agente Soporte-Tier1</p>
+                                    <p class="text-slate-400">Ticket #4892 · Sync CRM Zendesk</p>
+                                </div>
+                                <span class="px-2 py-1 bg-emerald-950 text-emerald-400 rounded font-medium">Éxito · Hace 2m</span>
+                            </div>
+                            <div class="flex justify-between items-center p-3 bg-slate-950/50 rounded-lg border border-slate-800">
+                                <div>
+                                    <p class="font-semibold text-sm">Agente Scraping-Finanzas</p>
+                                    <p class="text-slate-400">Timeout 504 Gateway (Stripe API)</p>
+                                </div>
+                                <span class="px-2 py-1 bg-red-950 text-red-400 rounded font-medium">Fallo · Hace 7m</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 2. GESTIÓN DE USUARIOS -->
+                <section id="sec-users" class="space-y-6 hidden">
+                    <div class="bg-slate-900 rounded-xl border border-slate-800 overflow-hidden shadow-sm">
+                        <table class="w-full text-left border-collapse text-sm">
+                            <thead>
+                                <tr class="border-b border-slate-800 bg-slate-800/40 text-xs uppercase text-slate-400">
+                                    <th class="p-4">Organización</th>
+                                    <th class="p-4">Correo</th>
+                                    <th class="p-4">Plan</th>
+                                    <th class="p-4">Estado</th>
+                                    <th class="p-4 text-right">Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-800">
+                                <tr>
+                                    <td class="p-4 font-medium">Acme Global Org</td>
+                                    <td class="p-4 text-slate-400">admin@acme.com</td>
+                                    <td class="p-4">Enterprise</td>
+                                    <td class="p-4"><span class="px-2.5 py-1 text-xs bg-emerald-950 text-emerald-400 rounded-full font-medium">Activo</span></td>
+                                    <td class="p-4 text-right relative">
+                                        <button onclick="toggleDropdown(event, 'user-dropdown-1')" class="p-1.5 hover:bg-slate-800 rounded">⋮</button>
+                                        <div id="user-dropdown-1" class="hidden absolute right-4 mt-2 w-36 bg-slate-800 border border-slate-700 rounded-lg shadow-lg z-20 text-left overflow-hidden">
+                                            <button onclick="openModal('modal-user-detail')" class="w-full px-4 py-2.5 text-xs hover:bg-slate-700 text-left font-medium">Ver detalle</button>
+                                            <button class="w-full px-4 py-2.5 text-xs text-red-400 hover:bg-slate-700 text-left font-medium">Eliminar</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- 3. GESTIÓN DE AGENTES -->
+                <section id="sec-agents" class="space-y-4 hidden">
+                    <div class="bg-slate-900 rounded-xl border border-slate-800 p-5 space-y-3 shadow-sm">
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <h3 class="font-bold text-sm">Agente Soporte-Tier1</h3>
+                                <p class="text-xs text-slate-400">Propietario: Acme Corp · Estado: <span class="text-emerald-400">Activo</span></p>
+                            </div>
+                            <div class="flex gap-2">
+                                <button onclick="toggleSkills('skills-1')" class="text-xs px-3 py-1.5 bg-indigo-950 text-indigo-400 rounded-md font-medium border border-indigo-900">Skills ▾</button>
+                                <button onclick="openModal('modal-config')" class="text-xs px-3 py-1.5 bg-slate-800 rounded-md font-medium">Configurar</button>
+                            </div>
+                        </div>
+                        <div id="skills-1" class="hidden pl-4 border-l-2 border-indigo-500 space-y-1 text-xs text-slate-400 pt-2">
+                            <p>• Web Scraping API (Habilitada)</p>
+                            <p>• Lectura de PDF / OCR (Habilitada)</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 4. SKILLS -->
+                <section id="sec-skills" class="space-y-6 hidden">
+                    <div class="p-4 bg-indigo-950/40 rounded-xl border border-indigo-900 text-sm space-y-1">
+                        <p class="font-semibold text-indigo-300">Catálogo de Skills</p>
+                        <p class="text-xs text-slate-400">Una skill es una capacidad atómica conectada al agente para realizar tareas específicas de negocio.</p>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="p-5 bg-slate-900 rounded-xl border border-slate-800 space-y-2">
+                            <h4 class="font-bold text-sm">Web Scraping API</h4>
+                            <p class="text-xs text-slate-400">Extracción estructurada en tiempo real.</p>
+                            <p class="text-[11px] font-semibold text-indigo-400 pt-2">Habilitado en 38 agentes</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 5. CONTRATACIONES -->
+                <section id="sec-contracts" class="space-y-6 hidden">
+                    <div class="bg-slate-900 rounded-xl border border-slate-800 overflow-hidden shadow-sm">
+                        <table class="w-full text-left border-collapse text-sm">
+                            <thead>
+                                <tr class="border-b border-slate-800 bg-slate-800/40 text-xs uppercase text-slate-400">
+                                    <th class="p-4">Cliente</th>
+                                    <th class="p-4">Agente</th>
+                                    <th class="p-4">Skills</th>
+                                    <th class="p-4">Vigencia</th>
+                                    <th class="p-4 text-right">Importe</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-800 text-sm">
+                                <tr>
+                                    <td class="p-4 font-medium">Acme Corp</td>
+                                    <td class="p-4">Soporte-Tier1</td>
+                                    <td class="p-4 text-slate-400 text-xs">Web Scraping, OCR</td>
+                                    <td class="p-4 text-xs">01 Oct - 31 Dic</td>
+                                    <td class="p-4 text-right font-bold">$1,200/mes</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- 6. LOG DE ERRORES -->
+                <section id="sec-errors" class="space-y-4 hidden">
+                    <div class="p-4 bg-slate-900 rounded-xl border border-slate-800 flex justify-between items-center shadow-sm">
+                        <div class="space-y-1">
+                            <div class="flex items-center gap-2">
+                                <span class="px-2 py-0.5 text-[10px] bg-red-500 text-white rounded font-bold uppercase">Crítico</span>
+                                <span class="text-xs font-mono text-slate-400">[2026-09-17 21:00]</span>
+                            </div>
+                            <p class="text-sm font-semibold">Agente Scraping-Finanzas</p>
+                            <p class="text-xs text-slate-400">Timeout 504 Gateway (Stripe API)</p>
+                        </div>
+                        <button onclick="openModal('modal-error')" class="px-3 py-1.5 text-xs bg-slate-800 rounded-lg font-medium">Ver traza</button>
+                    </div>
+                </section>
+
+            </main>
+        </div>
+    </div>
+
+    <!-- MODAL NUEVO AGENTE -->
+    <div id="modal-agent" class="hidden fixed inset-0 bg-slate-950/70 backdrop-blur-xs flex items-center justify-center z-50 p-4" onclick="closeModalOnBackdrop(event, 'modal-agent')">
+        <div class="bg-slate-900 rounded-xl max-w-lg w-full p-6 border border-slate-800 shadow-xl space-y-4">
+            <h3 class="text-lg font-bold">Desplegar Nuevo Agente</h3>
+            <div class="space-y-3 text-sm">
+                <div>
+                    <label class="block text-xs font-medium text-slate-400 mb-1">Nombre del Agente</label>
+                    <input type="text" placeholder="Ej: Agente Conciliación Bancaria" class="w-full p-2.5 bg-slate-950 border border-slate-800 rounded-lg text-xs focus:outline-none">
+                </div>
+                <div>
+                    <label class="block text-xs font-medium text-slate-400 mb-1">Modelo Fundacional</label>
+                    <select class="w-full p-2.5 bg-slate-950 border border-slate-800 rounded-lg text-xs focus:outline-none">
+                        <option>Claude 3.5 Sonnet (Recomendado)</option>
+                        <option>GPT-4o Enterprise</option>
+                        <option>Gemini 1.5 Pro</option>
+                    </select>
+                </div>
+            </div>
+            <div class="flex gap-3 pt-2">
+                <button onclick="closeModal('modal-agent')" class="flex-1 py-2 bg-slate-800 text-slate-300 rounded-lg text-xs font-medium">Cancelar</button>
+                <button onclick="closeModal('modal-agent')" class="flex-1 py-2 bg-indigo-600 text-white rounded-lg text-xs font-medium">Crear Agente</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- SCRIPT DE INTERACTIVIDAD -->
+    <script>
+        function switchSection(sectionId) {
+            ['dashboard', 'users', 'agents', 'skills', 'contracts', 'errors'].forEach(id => {
+                document.getElementById(`sec-${id}`).classList.add('hidden');
+                document.getElementById(`nav-${id}`).className = "w-full flex items-center gap-3 px-3 py-2.5 rounded-lg font-medium text-slate-400 hover:bg-slate-800 transition";
+            });
+            document.getElementById(`sec-${sectionId}`).classList.remove('hidden');
+            document.getElementById(`nav-${sectionId}`).className = "w-full flex items-center gap-3 px-3 py-2.5 rounded-lg font-medium bg-indigo-600 text-white transition";
+        }
+
+        function toggleDropdown(event, dropdownId) {
+            event.stopPropagation();
+            document.querySelectorAll("[id^='user-dropdown']").forEach(el => {
+                if(el.id !== dropdownId) el.classList.add('hidden');
+            });
+            document.getElementById(dropdownId).classList.toggle('hidden');
+        }
+
+        window.onclick = function() {
+            document.querySelectorAll("[id^='user-dropdown']").forEach(el => el.classList.add('hidden'));
+        }
+
+        function toggleSkills(skillsId) {
+            document.getElementById(skillsId).classList.toggle('hidden');
+        }
+
+        function openModal(modalId) {
+            document.getElementById(modalId).classList.remove('hidden');
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.add('hidden');
+        }
+
+        function closeModalOnBackdrop(event, modalId) {
+            if(event.target.id === modalId) closeModal(modalId);
+        }
+
+        function toggleDarkMode() {
+            // El diseño por defecto ya viene en modo oscuro profesional como Stitch
+            alert('Modo oscuro activo por defecto (Estándar Stitch B2B).');
+        }
+    </script>
+</body>
+</html>
